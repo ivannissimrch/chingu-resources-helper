@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import Prompt from "./Prompt";
+import ComponentErrorFallback from "./ComponentErrorFallback";
 import { LiaCompassSolid } from "react-icons/lia";
 
 export default function ChatBotContainer() {
@@ -25,7 +27,9 @@ export default function ChatBotContainer() {
       {/* Chat Window */}
       {showChat && (
         <div className="absolute bottom-full mb-3 w-full shadow-sm/20 z-40 max-h-[70vh] overflow-y-auto">
-          <Prompt />
+          <ErrorBoundary FallbackComponent={ComponentErrorFallback}>
+            <Prompt />
+          </ErrorBoundary>
         </div>
       )}
     </div>
