@@ -1,9 +1,11 @@
+import { ErrorBoundary } from "react-error-boundary";
 import Authors from "../components/Authors";
 import Form from "../components/Form";
 import ResetFilters from "../components/ResetFilters";
 import ResourcesC from "../components/ResourcesC";
 import ResourceType from "../components/ResourceType";
 import TagsContainer from "../components/TagsContainer";
+import ComponentErrorFallback from "../components/ComponentErrorFallback";
 
 export default function Discover() {
   return (
@@ -17,7 +19,9 @@ export default function Discover() {
           <ResetFilters />
         </aside>
         <section className="flex flex-col items-start overflow-auto flex-1 p-6">
-          <ResourcesC />
+          <ErrorBoundary FallbackComponent={ComponentErrorFallback}>
+            <ResourcesC />
+          </ErrorBoundary>
         </section>
       </div>
     </main>

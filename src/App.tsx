@@ -9,6 +9,7 @@ import { useStoreContext } from "./context/StoreContext.tsx";
 import { Snackbar, Alert } from "@mui/material";
 import { useState } from "react";
 import getErrorMessage from "./helpers/getErrorMessage.ts";
+import FallbackRender from "./components/FallbackRender.tsx";
 
 export default function App() {
   const { isLoading, error } = useStoreContext();
@@ -18,6 +19,7 @@ export default function App() {
     {
       path: "/",
       element: <RootLayout />,
+      errorElement: <FallbackRender />,
       children: [
         {
           path: "",
