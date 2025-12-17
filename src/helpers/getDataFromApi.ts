@@ -2,6 +2,7 @@ import axios from "axios";
 import type { Resources, Tags } from "../Types";
 import isValidUrl from "./isValidUrl";
 import getResourceType from "./getResourceType";
+import logError from "./logError";
 
 export default async function getDataFromApi(): Promise<
   [Tags[], Resources[]] | undefined
@@ -15,6 +16,7 @@ export default async function getDataFromApi(): Promise<
         "https://resources-helper-temp-api.vercel.app/api/resources"
       ),
     ]);
+
     const tagsData = tags.data.map((tag) => {
       return { ...tag, selected: false };
     });
@@ -23,7 +25,6 @@ export default async function getDataFromApi(): Promise<
       isValidUrl(resource)
     );
 
-    //change name of this variable since i also adding isFavorite not just type
     const resourcesWithType = validUrlResources.map((resource) => ({
       ...resource,
       resourceType: getResourceType(resource.url),
@@ -38,6 +39,7 @@ export default async function getDataFromApi(): Promise<
 
     return [tagsData, uniqueResources];
   } catch (error) {
-    console.error("Error fetching data:", error);
+    logError(error);
+    throw error;
   }
 }
