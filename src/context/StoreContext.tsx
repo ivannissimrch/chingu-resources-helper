@@ -25,6 +25,8 @@ export const storeContext = createContext<StoreContext>({
     resourcesType: [],
     sortedValue: "",
   },
+  isLoading: false,
+  error: null,
   clearFilterResources: () => undefined,
   searchResources: () => undefined,
   handleClickedTags: () => undefined,
@@ -52,6 +54,9 @@ export default function StoreContextProvider({
     resourcesType: [],
     sortedValue: "newest",
   });
+
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<Error | null>(null);
 
   const combineFilters = useCallback(
     (
@@ -283,8 +288,10 @@ export default function StoreContextProvider({
   useEffect(() => {
     const today = new Date().toLocaleDateString();
     if (store.resources.length === 0 || today !== store.lastUpdate) {
+      setIsLoading(true);
       getDataFromApi()
         .then((data) => {
+          setIsLoading(false);
           if (data) {
             setStore((prev) => {
               return {
@@ -297,8 +304,10 @@ export default function StoreContextProvider({
             });
           }
         })
-        .catch((error) => {
+        .catch((error: Error) => {
           logError(error);
+          setIsLoading(false);
+          setError(error);
         });
     }
   }, [setStore, store.lastUpdate, store.resources.length]);
@@ -306,6 +315,8 @@ export default function StoreContextProvider({
   const contextValue = useMemo(
     () => ({
       store,
+      isLoading,
+      error,
       clearFilterResources,
       searchResources,
       handleClickedTags,
@@ -319,6 +330,8 @@ export default function StoreContextProvider({
     }),
     [
       store,
+      isLoading,
+      error,
       clearFilterResources,
       searchResources,
       handleClickedTags,

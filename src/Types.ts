@@ -28,6 +28,8 @@ export interface Store {
 
 export interface StoreContext {
   store: Store;
+  isLoading: boolean;
+  error: Error | null;
   clearFilterResources: () => void;
   handleClickedTags: (Tags: Tags) => void;
   searchResources: (query: string) => void;
