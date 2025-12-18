@@ -13,26 +13,26 @@ Bonus feature? An interactive AI assistant powered by the **Google Gemini API** 
 # Features
 
 - **Searchable Resource Library**
-Find links to helpful articles, videos, and tools focused on software development.,
+  Find links to helpful articles, videos, and tools focused on software development.,
 
 - **Advanced Filtering**
-Filter resources by tag, type, or author — or combine multiple filters to narrow results.,
+  Filter resources by tag, type, or author — or combine multiple filters to narrow results.,
 
 - **Favorites System**
-Users can log in and favorite resources for easy access later.,
+  Users can log in and favorite resources for easy access later.,
 
 - **Pagination**
-Resource results are neatly paginated for smooth browsing, even with a large dataset.,
+  Resource results are neatly paginated for smooth browsing, even with a large dataset.,
 
 - **AI-Powered Assistance**
-Ask questions or get resource suggestions through a custom-built AI chatbot powered by the Google Gemini API.
-The AI has been given specific personality traits and app context, making its responses helpful and on-brand.,
+  Ask questions or get resource suggestions through a custom-built AI chatbot powered by the Google Gemini API.
+  The AI has been given specific personality traits and app context, making its responses helpful and on-brand.,
 
 - **Responsive Design**
-Built with modern UI/UX principles using Tailwind CSS, designed to be usable on any screen size.,
+  Built with modern UI/UX principles using Tailwind CSS, designed to be usable on any screen size.,
 
 - **Agile Collaboration**
-Developed collaboratively in sprints using Agile methodology and Jira to manage scope and progress.
+  Developed collaboratively in sprints using Agile methodology and Jira to manage scope and progress.
 
 # Running The Project
 
@@ -44,7 +44,7 @@ Developed collaboratively in sprints using Agile methodology and Jira to manage 
 
 # Live version
 
-[**DevVault on Netlify**](https://dev-vault-chingu.netlify.app/)
+[**DevVault**](https://chingu-resources-helper.vercel.app/)
 
 # Tech Stack
 
