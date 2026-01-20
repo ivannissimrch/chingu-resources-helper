@@ -1,145 +1,118 @@
-import { useState } from "react";
-
 export default function Footer() {
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const [showContributors, setShowContributors] = useState<boolean>(false);
-
-  const toggleContributors = () => {
-    setShowContributors((prev) => !prev);
-  };
-
   const contributors = [
     {
-      avatar: "/images/contibutors/Viral.jpeg",
-      name: "Viral Barot",
-      role: "Product Owner",
-      link: "https://www.linkedin.com/in/viral-barot-mba/",
-    },
-    {
-      avatar: "/images/contibutors/Jennie.jpeg",
-      name: "Jennie Glass",
-      role: "UI/UX",
-      link: "https://www.linkedin.com/in/jennie-glass-design/",
-    },
-    {
-      avatar: "/images/contibutors/Nathan.jpeg",
-      name: "Nathan Walker",
+      avatar: "/images/contibutors/AlexThomas.jpeg",
+      name: "Alex Thomas",
       role: "Scrum Master",
-      link: "https://www.linkedin.com/in/nathan-walker-770517106/",
+      link: "https://linkedin.com/in/ajt11176",
+      github: "https://github.com/BagelTime",
     },
     {
-      avatar: "/images/contibutors/Maria.jpeg",
-      name: "Maria Nathalie Chejin",
-      role: "Shadow Scrum Master",
-      link: "https://www.linkedin.com/in/marianathaliechejin/",
+      avatar: "/images/contibutors/WaelKweder.jpeg",
+      name: "Wael Kweder",
+      role: "Frontend Developer",
+      link: "https://linkedin.com/in/wael-kweder-a63836339/",
+      github: "https://github.com/WDataW",
+    },
+
+    {
+      avatar: "/images/contibutors/EmilyCarr.jpeg",
+      name: "Emily Carr",
+      role: "Web Developer",
+      link: "https://www.linkedin.com/in/emily-c-2285a9277/",
+      github: "https://github.com/codingEmily",
+    },
+
+    {
+      avatar: "/images/contibutors/bhoyem.jpeg",
+      name: "Bryan Hoyem",
+      role: "Developer",
+      link: "https://www.linkedin.com/in/bryanhoyem",
+      github: "https://github.com/bhoyem",
     },
     {
       avatar: "/images/contibutors/Ivan.jpeg",
       name: "Ivan Rebolledo",
-      role: "Developer",
+      role: "Frontend Developer",
       link: "https://github.com/ivannissimrch",
+      github: "https://github.com/ivannissimrch",
     },
     {
-      avatar: "/images/contibutors/Stef.jpeg",
-      name: "Stephanie Leon",
-      role: "Developer",
-      link: "https://github.com/stefleon33",
+      avatar: "/images/contibutors/JugrajSinghBali.jpeg",
+      name: "Jugraj Singh Bali ",
+      role: "Web Developer",
+      link: "https://www.linkedin.com/in/jugraj-singh-bali-117994268/",
+      github: "https://github.com/jugrajsinghbali",
     },
     {
-      avatar: "/images/contibutors/Christin.jpeg",
-      name: "Christin Martin",
-      role: "Developer",
-      link: "https://github.com/Christin-paige",
-    },
-    {
-      avatar: "/images/contibutors/Ramon.jpeg",
-      name: "Ramon Zambrano",
-      role: "Developer",
-      link: "https://github.com/r-alejo-z95",
+      avatar: "/images/contibutors/MatthewNeie.jpeg",
+      name: "Matthew Neie",
+      role: "Web Developer",
+      link: "https://www.linkedin.com/in/matthew-neie",
+      github: "https://github.com/MatthewNeie",
     },
   ];
 
   return (
-    <footer className="flex items-center justify-between text-sm px-8 md:px-4 py-3 w-full h-20 border-1 border-[#E5E7EB] bg-[#F9FAFB] text-gray-800 z-50">
-      <section>
-        <a
-          className="flex items-center gap-2 hover:underline underline-offset-2"
-          href="https://github.com/chingu-voyages/V55-tier2-team-24"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="/images/github-mark.png"
-            alt="Github icon"
-            width={30}
-            height={30}
-          ></img>
-          <span className="hidden md:block">GitHub Repo</span>
-          <span className="sr-only">(opens in a new tab)</span>
-        </a>
-      </section>
-
-      {/* Desktop */}
-      <section className="hidden md:flex items-center gap-2">
-        <p className="cursor-default">Contributors</p>
-        <div className="flex gap-1">
-          {contributors.map((contributor, index) => (
-            <div key={index} className="relative">
-              <img
+    <footer className="gap-4 p-6 bg-gray-800 text-white">
+      <h2 className="mb-2 flex justify-center text-2xl">Meet our Team</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {contributors.map((contributor, index) => (
+          <section
+            key={index}
+            className="flex items-center justify-evenly  hover:bg-gray-600 transition-colors duration-100 min-w-fit "
+          >
+            <img
               src={contributor.avatar}
               alt={contributor.name}
-              width={30}
-              height={30}
-              className="rounded-full cursor-pointer"
-              onClick={() =>
-                window.open(contributor.link, "_blank", "noopener,noreferrer")
-              }
-              onMouseEnter={() => setHoveredId(index)}
-              onMouseLeave={() => setHoveredId(null)}
-              />
-              {hoveredId === index && (
-              <div className="absolute bottom-full right-0 transform mb-2 px-2 py-1 bg-[#41A3C9] text-white text-xs rounded-md shadow-lg whitespace-nowrap z-10">
-                <p className="font-medium">{contributor.name}</p>
-                <p className="text-gray-200 text-[10px]">
-                {contributor.role}
-                </p>
-              </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
+              className="w-16 h-16 rounded-full object-cover"
+            />
 
-      {/* Mobile */}
-      <section className="md:hidden relative">
-        <p
-          className="cursor-pointer hover:text-gray-600"
-          onClick={toggleContributors}
-        >
-          Contributors
-        </p>
-        {showContributors && (
-          <div className="absolute bottom-full right-0 transform mb-2 px-2 py-1 text-[#41A3C9] bg-[#F9FAFB] text-xs rounded-md shadow-lg whitespace-nowrap z-60">
-            <div className="flex flex-col gap-2">
-              {contributors.map((contributor, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2 p-1 border-b border-gray-200 last:border-0 cursor-pointer"
-                  onClick={() =>
-                    window.open(contributor.link, "_blank noopener noreferrer")
-                  }
-                >
-                  <div>
-                    <p className="font-medium">{contributor.name}</p>
-                    <p className="text-gray-400 text-[10px]">
-                      {contributor.role}
-                    </p>
-                  </div>
-                </div>
-              ))}
+            <div className="m-2">
+              <p className=" text-sm font-medium">{contributor.name}</p>
+              <p className="text-xs text-gray-400">{contributor.role}</p>
             </div>
-          </div>
-        )}
+            <div className="flex gap-2">
+              <a className="text-sm" href={contributor.github}>
+                <img
+                  src="/images/github-mark.png"
+                  alt="GitHub"
+                  className="w-8 h-8 bg-white rounded object-cover p-0.5"
+                />
+              </a>
+              <a className="text-sm" href={contributor.link}>
+                <img
+                  src="/images/LinkedIn.png"
+                  alt="LinkedIn"
+                  className="w-8 h-8 bg-white  rounded object-cover"
+                />
+              </a>
+            </div>
+          </section>
+        ))}
+      </div>
+      <section className="flex mt-2">
+        <div className="w-screen flex gap-4 justify-center md:justify-end items-center">
+          {" "}
+          <a href="https://github.com/chingu-voyages/v59-tier2-team-23">
+            Go to the project repo
+          </a>
+          <a href="https://github.com/chingu-voyages/v59-tier2-team-23">
+            <img
+              src={"/images/github-mark.png"}
+              alt={"github"}
+              className="w-6 h-6 rounded-full object-cover bg-white"
+            />
+          </a>
+        </div>
+        {/* <div className="w-1/2 flex justify-end">
+          {" "}
+          <img
+            src={"/images/Chingu.png"}
+            alt={"github"}
+            className="w-16 h-16 rounded-full object-cover"
+          />
+        </div> */}
       </section>
     </footer>
   );
